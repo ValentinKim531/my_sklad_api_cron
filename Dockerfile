@@ -13,15 +13,10 @@ RUN apt-get update && apt-get install -y cron supervisor
 ENV TZ=Asia/Almaty
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY cron_schedule /etc/cron.d/cron_schedule
 RUN chmod 0644 /etc/cron.d/cron_schedule
 
 RUN crontab /etc/cron.d/cron_schedule
 
-# Убедитесь, что файл cron.log создается
-RUN touch /app/cron.log
-
-# Запуск cron и FastAPI через supervisord
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
