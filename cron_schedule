@@ -1,3 +1,2 @@
 * * * * * /app/.venv/bin/python /app/main.py >> /app/cron.log 2>&1
 
-# Пустая строка в конце файла

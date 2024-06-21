@@ -14,6 +14,7 @@ COPY . .
 # Установка cron и supervisord
 RUN apt-get update && apt-get install -y cron supervisor
 
+
 # Копирование расписания cron и установка прав доступа
 COPY cron_schedule /etc/cron.d/cron_schedule
 RUN chmod 0644 /etc/cron.d/cron_schedule
