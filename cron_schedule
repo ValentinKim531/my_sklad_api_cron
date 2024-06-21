@@ -1,1 +1,1 @@
-* * * * * /usr/local/bin/python /app/main.py ACTION=start >> /app/cron.log 2>&1
+* * * * * /usr/local/bin/python /app/main.py >> /app/cron.log 2>&1

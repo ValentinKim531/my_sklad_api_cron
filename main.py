@@ -42,11 +42,4 @@ def start_service():
     logger.info(f"{datetime.now()} - Start response: {response.json()}")
 
 if __name__ == "__main__":
-    action = os.getenv("ACTION")
-    logger.info(f"{datetime.now()} - Script started with action: {action}")
-    if action == "start":
-        start_service()
-    elif action == "stop":
-        stop_service()
-    else:
-        logger.error(f"{datetime.now()} - No valid ACTION provided")
+    logging.info("Script started")
