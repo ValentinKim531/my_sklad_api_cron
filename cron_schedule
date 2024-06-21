@@ -1,5 +1,5 @@
 # cron_schedule
-0 15 * * * /usr/local/bin/python /app/main.py ACTION=start >> /var/log/cron.log 2>&1
-0 20 * * * /usr/local/bin/python /app/main.py ACTION=stop >> /var/log/cron.log 2>&1
+0 15 * * * /usr/local/bin/python /app/main.py ACTION=start >> /app/cron.log 2>&1
+0 20 * * * /usr/local/bin/python /app/main.py ACTION=stop >> /app/cron.log 2>&1
 
 # Добавьте пустую строку в конце файла
