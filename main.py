@@ -53,3 +53,20 @@ if __name__ == "__main__":
         stop_service()
     else:
         logger.warning("No valid action provided")
+
+
+
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
+
+app = FastAPI()
+
+@app.get("/logs")
+async def get_logs():
+    with open("/app/cron.log", "r") as file:
+        logs = file.read()
+    return PlainTextResponse(logs)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
