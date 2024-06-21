@@ -21,4 +21,7 @@ RUN crontab /etc/cron.d/cron_schedule
 # Убедитесь, что файл cron.log создается
 RUN touch /app/cron.log
 
-CMD ["cron", "-f", "&&", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Запуск cron и FastAPI через supervisord
+COPY supervisord.conf /etc/supervisord.conf
+
+CMD ["/usr/bin/supervisord"]
