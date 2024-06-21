@@ -14,9 +14,6 @@ COPY . .
 # Установка cron и supervisord
 RUN apt-get update && apt-get install -y cron supervisor
 
-# Указание таймзоны
-ENV TZ=Asia/Almaty
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Копирование расписания cron и установка прав доступа
 COPY cron_schedule /etc/cron.d/cron_schedule
