@@ -25,5 +25,8 @@ RUN chmod 0644 /etc/cron.d/cron_schedule
 # Установка crontab
 RUN crontab /etc/cron.d/cron_schedule
 
-# Запуск cron
-CMD ["cron", "-f"]
+# Копирование и установка конфигурации для supervisord
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Запуск supervisord
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
