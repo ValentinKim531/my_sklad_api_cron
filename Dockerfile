@@ -11,8 +11,8 @@ RUN /app/.venv/bin/pip install -r requirements.txt
 # Копирование всех файлов в рабочую директорию
 COPY . .
 
-# Установка cron
-RUN apt-get update && apt-get install -y cron
+# Установка cron и supervisord
+RUN apt-get update && apt-get install -y cron supervisor
 
 # Указание таймзоны
 ENV TZ=Asia/Almaty
