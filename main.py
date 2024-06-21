@@ -31,7 +31,6 @@ def start_service():
         serviceStart(id: "{SERVICE_ID}") {{
             id
         }}
-    }}
     """
     response = requests.post(API_URL, json={'query': query}, headers=headers)
     print(f"{datetime.now()} - Start response: {response.json()}")
@@ -48,9 +47,7 @@ if __name__ == "__main__":
     else:
         print(f"{datetime.now()} - No valid ACTION found")
 
-
 app = FastAPI()
-
 
 @app.get("/logs")
 async def get_logs():

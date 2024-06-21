@@ -7,7 +7,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN apt-get update && apt-get install -y cron
+RUN apt-get update && apt-get install -y cron supervisor
 
 # Указание таймзоны
 ENV TZ=Asia/Almaty
@@ -22,6 +22,6 @@ RUN crontab /etc/cron.d/cron_schedule
 RUN touch /app/cron.log
 
 # Запуск cron и FastAPI через supervisord
-COPY supervisord.conf /etc/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
