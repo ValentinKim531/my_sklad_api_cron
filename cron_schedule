@@ -1,0 +1,2 @@
+0 15 * * * /usr/local/bin/python /app/main.py ACTION=start
+0 20 * * * /usr/local/bin/python /app/main.py ACTION=stop
