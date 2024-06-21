@@ -18,4 +18,7 @@ RUN chmod 0644 /etc/cron.d/cron_schedule
 
 RUN crontab /etc/cron.d/cron_schedule
 
+# Убедитесь, что файл cron.log создается
+RUN touch /var/log/cron.log
+
 CMD ["cron", "-f"]
