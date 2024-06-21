@@ -21,4 +21,4 @@ RUN crontab /etc/cron.d/cron_schedule
 # Убедитесь, что файл cron.log создается
 RUN touch /app/cron.log
 
-CMD ["cron", "-f"]
+CMD ["cron", "-f", "&&", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
